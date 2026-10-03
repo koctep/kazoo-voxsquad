@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "_id": "callflows.voxsquad",
+    "description": "Validator for the voxsquad callflow data object",
+    "properties": {
+        "openai": {
+            "description": "OpenAI Realtime SIP settings",
+            "properties": {
+                "api_key": {
+                    "description": "OpenAI API key used to accept the call",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "project_id": {
+                    "description": "OpenAI project ID used in the SIP URI",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "prompt": {
+                    "description": "Instructions for the voicebot",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "region": {
+                    "default": "us",
+                    "description": "OpenAI SIP region",
+                    "enum": [
+                        "us",
+                        "eu"
+                    ],
+                    "type": "string"
+                },
+                "webhook_secret": {
+                    "description": "Signing secret of the OpenAI project webhook",
+                    "pattern": "^whsec_",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "api_key",
+                "project_id",
+                "prompt",
+                "webhook_secret"
+            ],
+            "type": "object"
+        },
+        "provider": {
+            "description": "Provider",
+            "enum": [
+                "openai"
+            ],
+            "type": "string"
+        },
+        "skip_module": {
+            "description": "When set to true this callflow action is skipped, advancing to the wildcard branch (if any)",
+            "type": "boolean"
+        }
+    },
+    "required": [
+        "provider"
+    ],
+    "type": "object"
+}

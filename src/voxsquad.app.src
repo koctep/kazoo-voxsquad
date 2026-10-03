@@ -1,0 +1,9 @@
+{application,voxsquad,
+             [{applications,[kazoo,kazoo_amqp,kazoo_apps,kazoo_call,
+                             kazoo_endpoint,kazoo_stdlib,kernel,lager,stdlib]},
+              {description,"Vox Squad brings AI Voicebot to your crew"},
+              {env,[{is_kazoo_app,true}]},
+              {mod,{voxsquad_app,[]}},
+              {modules,[]},
+              {registered,[voxsquad_sup]},
+              {vsn,git}]}.
